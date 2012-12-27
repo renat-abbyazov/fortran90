@@ -1,0 +1,15 @@
+FC	= gfortran
+FFLAGS	= -Wall -Wextra -Wimplicit-interface -fPIC -fmax-errors=1 -g -fcheck=all -fbacktrace
+OBJS	= f90_vs_numpy_arrays_5_qpck.o 
+
+.SUFFIXES: .f90
+.f90.o: 
+	$(FC) $(FFLAGS) -c $<
+f90_vs_numpy_arrays_5: $(OBJS) f90_vs_numpy_arrays_5.o
+	$(FC) $(FFLAGS) -o $@ $(OBJS) $@.o $(LDFLAGS)
+
+clean:
+	-rm -f *.o *.mod
+tidy: clean
+	-rm -f f90_vs_numpy_arrays_5 
+

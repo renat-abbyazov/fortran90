@@ -1,0 +1,11 @@
+from numpy cimport ndarray
+from numpy import empty
+
+cdef extern:
+    void c_meshexp(double *r_min, double *r_max, double *a, int *N,
+            double *mesh)
+
+def mesh_exp(double r_min, double r_max, double a, int N):
+    cdef ndarray[double, mode="c"] mesh = empty(N, dtype="double")
+    c_meshexp(&r_min, &r_max, &a, &N, &mesh[0])
+    return mesh
