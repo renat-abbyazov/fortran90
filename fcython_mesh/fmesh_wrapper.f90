@@ -7,13 +7,13 @@ module fmesh_wrapper
 
 contains
 
-  subroutine c_meshexp(r_min, r_max, a, N, mesh) bind(c)
-    real(c_double), intent(in) :: r_min
-    real(c_double), intent(in) :: r_max
+  subroutine c_meshexp(rmin, rmax, a, N, mesh) bind(c)
+    real(c_double), intent(in) :: rmin
+    real(c_double), intent(in) :: rmax
     real(c_double), intent(in) :: a
     integer(c_int), intent(in) :: N
-    real(c_double), intent(out) :: mesh(N)
-    call meshexp(r_min, r_max, a, N, mesh)
+    real(c_double), intent(out) :: mesh(N+1)
+    mesh = meshexp(rmin, rmax, a, N)
   end subroutine c_meshexp
 
   ! wrap more functions here
