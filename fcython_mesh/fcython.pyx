@@ -6,6 +6,6 @@ cdef extern:
             double *mesh)
 
 def mesh_exp(double r_min, double r_max, double a, int N):
-    cdef ndarray[double, mode="c"] mesh = empty(N, dtype="double")
+    cdef ndarray[double, mode="c"] mesh = empty(N+1, dtype="double")
     c_meshexp(&r_min, &r_max, &a, &N, &mesh[0])
     return mesh
