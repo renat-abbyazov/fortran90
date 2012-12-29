@@ -601,7 +601,7 @@ contains
     real b
     real centr
     real dhlgth
-!    real, external :: f
+    real, external :: f
     real fc
     real fsum
     real fval1

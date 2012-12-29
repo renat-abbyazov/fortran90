@@ -21,10 +21,10 @@ CC = gcc
 #CFLAGS = -Wall -fPIC -I$(SPKG_LOCAL)/include/python2.6 -I$(SPKG_LOCAL)/lib/python2.6/site-packages/numpy/core/include
 CFLAGS = -Wall -fPIC -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include
 
-#fcython.so: fmesh_wrapper.o fcython.o fmesh.o utils.o types.o
+#fcython.so: fqpck_wrapper.o fcython.o f90_vs_numpy_arrays_5_qpck.o types.o
 #	$(F90) -shared -o fcython.so $^ -lpython2.6
 
-fcython.so: fmesh_wrapper.o fcython.o fmesh.o utils.o types.o
+fcython.so: fqpck_wrapper.o fcython.o f90_vs_numpy_arrays_5_qpck.o types.o
 	$(F90) -shared -o fcython.so $^ -lpython2.7
 
 fcython.c: fcython.pyx
@@ -36,6 +36,5 @@ fcython.c: fcython.pyx
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
 
-fmesh_wrapper.o: fmesh.o
-fmesh.o: types.o utils.o
-utils.o: types.o
+fqpck_wrapper.o: f90_vs_numpy_arrays_5_qpck.o types.o
+
