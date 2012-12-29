@@ -8,7 +8,7 @@ module fqpck_wrapper
 
 contains
 
-  subroutine c_quad(f, a, b, epsabs, epsrel, result, abserr, neval, ier)
+  subroutine c_quad(f, a, b, epsabs, epsrel, result, abserr, neval, ier) bind(c)
     real(c_double), external :: f
     real(c_double), intent(in) :: a
     real(c_double), intent(in) :: b
